@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-lg-12 col-md-12">
+            <form [formGroup]="productForm" (ngSubmit)="saveProduct(productForm.value)">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" placeholder="Enter Name" formControlName="name" required>
+                        <div class="alert-danger" *ngIf="!productForm.controls['name'].valid && (productForm.controls['name'].touched)">
+                            Name is required
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="description"></label>
+                        <input type="text" class="form-control" placeholder="Enter Description" formControlName="description" required>
+                        <div class="alert-danger" *ngIf="!productForm.controls['description'].valid && (productForm.controls['description'].touched)">
+                            Description is required
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="price"></label>
+                        <input type="number" class="form-control" placeholder="Enter Price " required>
+                        <div class="alert-danger" *ngIf="!productForm.controls['price'].valid && (productForm.controls['price'].touched">
+                            Price is required
+                        </div>
+                    </div>
+                     <button class="btn btn-primary" [disable]="!productForm.valid">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
