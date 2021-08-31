@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-lg-12 col-md-12">
+            <div class="btn btn-success" (click)="selectedProduct('create','')">Add New Product</div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-12 col-lg-12 col-md-12">
+           <table class="table table-striped">
+               <thead>
+                   <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                   </tr>
+               </thead>
+               <tbody>
+                   <tr *ngFor="let product of products">
+                        <td>{{product.name}}</td>
+                        <td>{{product.description}}</td>
+                        <td>{{product.price}}</td>
+                        <td>
+                            
+                            <button class="btn btn-success" (click)="selectedProduct('view',product.id)" >View</button>
+                            <button class="btn btn-warning" (click)="selectedProduct('update',product.id)">Edit</button>
+                            <button class="btn btn-danger" (click)="selectedProduct('delete',product.id)">Delete</button>
+                        </td>
+                   </tr>
+               </tbody>
+           </table>
+        </div>
+    </div>
+</div>
