@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Product } from 'src/app/Model/product';
 import { ProductService } from 'src/app/Services/product.service';
 
 @Component({
@@ -10,8 +11,10 @@ import { ProductService } from 'src/app/Services/product.service';
 })
 export class CreateComponent implements OnInit {
 
-  productForm?:FormGroup;
+  product:Product=new Product();
+  productForm:FormGroup;
   constructor( private servi:ProductService,  private fb:FormBuilder,  private router:Router ) { 
+   
     this.productForm=this.fb.group({
       name:['',Validators.required],
       description:['',Validators.required],
@@ -23,19 +26,18 @@ export class CreateComponent implements OnInit {
   ngOnInit(): void {
   }
   saveProduct(values:any){
-    const  productData=new FormData();
-    productData.append('name',values.name);
-    productData.append('description',values.description);
-    productData.append('price',values.price);
-
-    this.servi.createProduct(productData).subscribe(
+ 
+    this.servi.createProduct(this.product).subscribe(
       data=>{
           console.log(data);
+          this.product=new Product();
           this.router.navigate(['']);
     },
     error=>{
       console.log(error);
     });
   }
-
+  backToList(){
+    this.router.navigate(['']);
+  }
 }
