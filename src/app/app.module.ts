@@ -8,6 +8,7 @@ import { ViewComponent } from './Components/view/view.component';
 import { UpdateComponent } from './Components/update/update.component';
 import { ReadComponent } from './Components/read/read.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule
   ],
   providers: [],
