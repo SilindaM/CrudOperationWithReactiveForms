@@ -38,5 +38,15 @@ export class ViewComponent implements OnInit {
       this.router.navigate([link +'/'+ id]);
     }
   }
+  //delete product by id
+  deleteProduct(id:any){
+    this.servi.deleteProduct(id).subscribe(
+      data=>{
+        this.loadProducts();
+      },
+      error=>{
+        console.log(error);
+      });
+  }
 
 }
