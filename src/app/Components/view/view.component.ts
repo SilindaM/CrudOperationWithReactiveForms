@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Product } from 'src/app/Model/product';
 import { ProductService } from 'src/app/Services/product.service';
 
 @Component({
@@ -9,7 +11,7 @@ import { ProductService } from 'src/app/Services/product.service';
 })
 export class ViewComponent implements OnInit {
 
-  public products:any=[];
+   products?:Product[];
   constructor(private servi:ProductService,private router:Router) { }
 
   ngOnInit(): void {
@@ -18,14 +20,14 @@ export class ViewComponent implements OnInit {
   }
   //load Products
   loadProducts(){
-    this.servi.getProducts().subscribe(
-      data=>{
-        this.products=data;
-        console.log(data);
-      },
-      error=>{
-        console.log(error);
-      });
+   this.servi.getProducts().subscribe(
+     data=>{
+       this.products=data;
+       console.log(data);
+     },
+     error=>{
+       console.log(error);
+     });
   }
   //go to select item
   selectedProduct(link:any,id:any){
