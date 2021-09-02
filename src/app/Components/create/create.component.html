@@ -19,11 +19,13 @@
                     <div class="form-group">
                         <label for="price"></label>
                         <input type="number" class="form-control" placeholder="Enter Price " required>
-                        <div class="alert-danger" *ngIf="!productForm.controls['price'].valid && (productForm.controls['price'].touched">
+                        <div class="alert-danger" *ngIf="!productForm.controls['price'].valid && (productForm.controls['price'].touched)">
                             Price is required
                         </div>
                     </div>
-                     <button class="btn btn-primary" [disable]="!productForm.valid">Submit</button>
+                     <button class="btn btn-primary" [disabled]="!productForm.valid">Submit</button>
+                     &nbsp;
+                     <div class="btn btn-primary" (click)="backToList()">Back</div>
             </form>
         </div>
     </div>
