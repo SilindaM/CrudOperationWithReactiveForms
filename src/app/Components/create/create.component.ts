@@ -10,8 +10,9 @@ import { ProductService } from 'src/app/Services/product.service';
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
-
   product:Product=new Product();
+  submitted=false;
+
   productForm:FormGroup;
   constructor( private servi:ProductService,  private fb:FormBuilder,  private router:Router ) { 
    
@@ -25,19 +26,10 @@ export class CreateComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  saveProduct(values:any){
- 
-    this.servi.createProduct(this.product).subscribe(
-      data=>{
-          console.log(data);
-          this.product=new Product();
-          this.router.navigate(['']);
-    },
-    error=>{
-      console.log(error);
-    });
-  }
-  backToList(){
-    this.router.navigate(['']);
+  onSubmit() {
+    this.servi.createProduct(this.productForm.value)
+      .subscribe( data => {
+        this.router.navigate(['']);
+      });
   }
 }

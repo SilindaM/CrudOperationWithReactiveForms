@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ProductService {
 
-  private  baseUrl="";
+  private  baseUrl="http://localhost:8081/api/products/";
   constructor(private http:HttpClient) { }
 
   //get Product
@@ -19,7 +19,7 @@ export class ProductService {
     return this.http.get(this.baseUrl);
   }
   //create Product
-  createProduct(data:any):Observable<any>{
+  createProduct(data:object):Observable<any>{
     return this.http.post(this.baseUrl,data);
   }
   //update
@@ -28,7 +28,8 @@ export class ProductService {
   }
   //delete 
   deleteProduct(id:any):Observable<any>{
-    return this.http.delete(this.baseUrl);
+    return this.http.delete(`${this.baseUrl}/${id}`,{responseType:'text'});
+
   }
 
 }
