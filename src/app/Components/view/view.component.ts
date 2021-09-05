@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/Model/product';
 import { ProductService } from 'src/app/Services/product.service';
@@ -11,8 +11,9 @@ import { ProductService } from 'src/app/Services/product.service';
 })
 export class ViewComponent implements OnInit {
 
-   products?:Product[];
-  constructor(private servi:ProductService,private router:Router) { }
+   id:number=0;
+   products?:any;
+  constructor(private servi:ProductService,private active:ActivatedRoute, private router:Router) { }
 
   ngOnInit(): void {
     //when applications starts load product
@@ -39,6 +40,14 @@ export class ViewComponent implements OnInit {
     else{
       this.router.navigate([link +'/'+ id]);
     }
+  }
+  //get product details
+  getDetails(id:number){
+    this.router.navigate(['details',id]);
+  }
+  //update details
+  updateDetails(update:string){
+    this.router.navigate(['update']);
   }
   //delete product by id
   deleteProduct(id:any){
