@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
       <div class="col-12 col-lg-12 col-md-12 sol-sm-12">
-        <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="productForm" (ngSubmit)="saveProduct(productForm.value)">
 
           <div class="form-group">
             <label>Name</label>
@@ -21,7 +21,7 @@
 
           <div class="form-group">
             <label>Price</label>
-            <input type="number" class="form-control" placeholder="price" formControlName="price" required>
+            <input type="text" class="form-control" placeholder="price" formControlName="price" required>
             <div class="alert-danger" *ngIf="!productForm.controls['price'].valid && (productForm.controls['price'].touched)">
                 Price is required.
             </div>

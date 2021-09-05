@@ -26,10 +26,36 @@ export class CreateComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  onSubmit() {
-    this.servi.createProduct(this.productForm.value)
-      .subscribe( data => {
-        this.router.navigate(['']);
-      });
+  get ProductName(){
+    return this.productForm.get('name');
   }
+  get ProductDescription(){
+    return this.productForm.get('description');
+  }
+  get ProductPrice(){
+    return this.productForm.get('price');
+  }
+  saveProduct(product:any){
+      this.product=new Product();
+      this.product.name=this.ProductName?.value;
+      this.product.description=this.ProductDescription?.value;
+      this.product.price=this.ProductPrice?.value;
+      this.submitted=true;
+
+      this.servi.createProduct(this.product).subscribe(
+        data=>{
+          console.log(data);
+        },
+        error=>{
+          console.log(error);
+        });
+        this.product=new Product();
+        this.home();
+  }
+  //back to home
+     home(){ 
+       this.router.navigate(['']);
+       //reload the content to show new content
+      
+     }
 }

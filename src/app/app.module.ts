@@ -9,6 +9,7 @@ import { UpdateComponent } from './Components/update/update.component';
 import { ReadComponent } from './Components/read/read.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { DetailsComponent } from './Components/details/details.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
     CreateComponent,
     ViewComponent,
     UpdateComponent,
-    ReadComponent
+    ReadComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,
