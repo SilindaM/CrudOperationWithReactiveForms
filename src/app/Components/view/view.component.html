@@ -22,8 +22,8 @@
                         <td>{{product.description}}</td>
                         <td>{{product.price}}</td>
                         <td>
-                            <button class="btn btn-warning" (click)="getDetails(product.id)">View</button>
-                            <button class="btn btn-success" (click)="updateDetails('update')" >Update</button>
+                            <button class="btn btn-warning" (click)="selectedProduct('details',product.id)">View</button>
+                            <button class="btn btn-success" (click)="selectedProduct('update',product.id)" >Update</button>
                             <button class="btn btn-danger" (click)="deleteProduct(product.id)">Delete</button>
                         </td>
                    </tr>
