@@ -17,20 +17,19 @@ export class ProductService {
   }
   //get Product details
   getProductDetails(id:any):Observable<any>{
-    return this.http.get(this.baseUrl);
+    return this.http.get(`${this.baseUrl}/${id}`);
   }
   //create Product
   createProduct(data:object):Observable<any>{
     return this.http.post<any>(this.baseUrl,data);
   }
   //update
-  updateProduct(data:any):Observable<Object>{
-    return this.http.put(this.baseUrl,data);
+  updateProduct(id:number,data:any):Observable<any>{
+    return this.http.put(`${this.baseUrl}/${id}`,data);
   }
   //delete 
   deleteProduct(id:any):Observable<any>{
     return this.http.delete(`${this.baseUrl}/${id}`,{responseType:'text'});
-
   }
 
 }
