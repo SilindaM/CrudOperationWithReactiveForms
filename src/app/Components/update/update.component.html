@@ -1,1 +1,41 @@
-hy
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-12 col-lg-12 col-md-12 sol-sm-12">
+        
+        <form [formGroup]="productForm"  *ngIf="productData" (ngSubmit)="onSubmit()">
+  
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-control" [(ngModel)]="productData.name" formControlName="name" required  >
+            <div class="alert-danger" *ngIf="!productForm.controls['name'].valid && (productForm.controls['name'].touched)">
+              
+                Name is required.
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <label>Desc</label>
+            <input type="text" class="form-control" [(ngModel)]="productData.description" formControlName="description" required>
+            <div class="alert-danger" *ngIf="!productForm.controls['description'].valid && (productForm.controls['description'].touched)">
+           
+                Description is required.
+             
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <label>Price</label>
+            <input type="text" class="form-control"  [(ngModel)]="productData.price"  formControlName="price" required>
+            <div class="alert-danger" *ngIf="!productForm.controls['price'].valid && (productForm.controls['price'].touched)">
+             price required
+            </div>
+          </div>
+  
+          <button type="submit" class="btn btn-primary" [disabled]="!productForm.valid">Submit</button>
+  
+        </form>
+      </div>
+    </div>
+  </div>
+
+ 
