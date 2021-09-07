@@ -41,14 +41,6 @@ export class ViewComponent implements OnInit {
       this.router.navigate([link +'/'+ id]);
     }
   }
-  //get product details
-  getDetails(id:number){
-    this.router.navigate(['details',id]);
-  }
-  //update details
-  updateDetails(update:string){
-    this.router.navigate(['update']);
-  }
   //delete product by id
   deleteProduct(id:any){
     this.servi.deleteProduct(id).subscribe(
